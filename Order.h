@@ -80,6 +80,11 @@ struct Order{
         isCompleted = false;
     }
 
+    void completeOrder(){
+        if(isCompleted){cout << "The order is completed\n";}
+        else{isCompleted = true; cout << "The order #" << orderNumber << "is completed\n";}
+    };
+
     void saveToBinaryFile(FILE* file){
         fwrite(&orderNumber, sizeof(orderNumber), 1, file);
         fwrite(clientName, sizeof(clientName), 1, file);

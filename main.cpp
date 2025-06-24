@@ -30,7 +30,7 @@ int main()
     //================================== MENU ========================================
 
     int menu = 0;
-
+    int tmpOrderNumber;
     do{
         cout << "-------------------------------------\n";
         cout << "\t MENU:\n\n";
@@ -38,6 +38,7 @@ int main()
         cout << "0 - Exit and save\n";
         cout << "1 - Show all orders\n";
         cout << "2 - New order\n";
+        cout << "3 - Complete order\n";
 
         cout << "Enter: ";
         cin >> menu;
@@ -53,11 +54,11 @@ int main()
                     }
                 }
                 break;
-            case 2:
+            case 2: {
                 cin.ignore();
-                Order* tmp = new Order[NClients + 1];
+                Order *tmp = new Order[NClients + 1];
 
-                for(int i = 0; i < NClients; i++){tmp[i] = arr[i];}
+                for (int i = 0; i < NClients; i++) { tmp[i] = arr[i]; }
 
                 delete[] arr;
                 arr = tmp;
@@ -66,6 +67,16 @@ int main()
                 NClients++;
                 cout << "Added!\n";
                 break;
+            }
+            case 3:
+                if(NClients == 0){cout << "There is no any order\n"; break;}
+                cout << "Enter the number of the order: ";
+                cin >> tmpOrderNumber;
+                cin.ignore();
+                if(tmpOrderNumber < 1 || tmpOrderNumber > NClients){cout << "Wrong number!";}
+                else{arr[tmpOrderNumber - 1].completeOrder();}
+                break;
+
         }
     } while (menu != 0);
 
