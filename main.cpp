@@ -49,7 +49,7 @@ int main()
                 else{
                     for(int i = 0; i < NClients; i++){
                         arr[i].showOrders();
-                        cout << "===================================";
+                        cout << "==================================";
                     }
                 }
                 break;
