@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Order.h"
-//#define CREATE_LOAD 1 // 1 - create, 0 - load
+#define CREATE_LOAD 0 // 1 - create, 0 - load
 
 int main()
 {
@@ -11,25 +11,25 @@ int main()
     Order* arr = nullptr;
 
     //============================== CREATE OR LOAD ==================================
-//#if CREATE_LOAD == 1
-//    cout << "HI";
-//#else
-//    fopen_s(&file, "order.bin", "rb")
-//    if(file != nullptr){
-//        fscanf_s(file,)
-//    }
-//#endif
+#if CREATE_LOAD == 1
+    cout << "HI";
+#else
+    fopen_s(&file, "order.bin", "rb");
+    if(file != nullptr){
+        fscanf_s(file, "%d", &NClients);
+        arr = new Order[NClients];
+        for(int i = 0; i < NClients; i++){
+            arr[i].loadFromBinaryFile(file);
+        }
+        fclose(file);
+        cout << "Loaded!\n";
+    }
+#endif
 
 
     //================================== MENU ========================================
 
     int menu = 0;
-    Order tmp_order;
-    char text[100];
-    int tmp_orderNumber;
-    double tmp_cash = 0;
-    int id = -1;
-    bool isCompleted;
 
     do{
         cout << "-------------------------------------\n";
@@ -71,8 +71,13 @@ int main()
 
     //================================== SAVE ========================================
 
-//    fopen_s(&file, "order.bin", "wb");
-//    if(file != nullptr){
-//
-//    }
+    fopen_s(&file, "order.bin", "wb");
+    if(file != nullptr){
+        fprintf(file, "%d", NClients);
+        for(int i = 0; i < NClients; i++){
+            arr[i].saveToBinaryFile(file);
+        }
+        fclose(file);
+        cout << "Saved!\n";
+    }
 }

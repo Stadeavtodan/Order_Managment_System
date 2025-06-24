@@ -79,4 +79,36 @@ struct Order{
         delete[] tmpDishes;
         isCompleted = false;
     }
+
+    void saveToBinaryFile(FILE* file){
+        fwrite(&orderNumber, sizeof(orderNumber), 1, file);
+        fwrite(clientName, sizeof(clientName), 1, file);
+        fwrite(&dishQuantity, sizeof(dishQuantity), 1, file);
+
+        for(int i = 0; i < dishQuantity; i++){
+            int len = strlen(dishList[i]) + 1;
+            fwrite(&len, sizeof(len), 1, file);
+            fwrite(dishList[i], sizeof(char), len, file);
+        }
+
+        fwrite(&cash, sizeof(cash), 1, file);
+        fwrite(&isCompleted, sizeof(isCompleted), 1, file);
+    }
+
+    void loadFromBinaryFile(FILE* file){
+        fread(&orderNumber, sizeof(orderNumber), 1, file);
+        fread(clientName, sizeof(clientName), 1, file);
+        fread(&dishQuantity, sizeof(dishQuantity), 1, file);
+
+        dishList = new char*[dishQuantity];
+        for(int i = 0; i < dishQuantity; i++){
+            int len = 0;
+            fread(&len, sizeof(len), 1, file);
+            dishList[i] = new char[len];
+            fread(dishList[i], sizeof(char), len, file);
+        }
+
+        fread(&cash, sizeof(cash), 1, file);
+        fread(&isCompleted, sizeof(isCompleted), 1, file);
+    }
 };
