@@ -1,0 +1,3 @@
+F:/C++_workspace/order management system/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+F:/C++_workspace/order management system/cmake-build-debug/CMakeFiles/order_management_system.dir
+F:/C++_workspace/order management system/cmake-build-debug/CMakeFiles/edit_cache.dir

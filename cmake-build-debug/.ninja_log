@@ -1,0 +1,13 @@
+# ninja log v5
+0	2673	7724758010553860	CMakeFiles/order_management_system.dir/main.cpp.obj	ae8c0dce400e45f5
+2675	3002	7724758013835087	order_management_system.exe	38c6975eb9a12ade
+4	702	7724758972156327	CMakeFiles/order_management_system.dir/main.cpp.obj	ae8c0dce400e45f5
+702	792	7724758972937621	order_management_system.exe	38c6975eb9a12ade
+4	1776	7724760981974594	CMakeFiles/order_management_system.dir/main.cpp.obj	ae8c0dce400e45f5
+1777	1896	7724760983224646	order_management_system.exe	38c6975eb9a12ade
+4	1049	7724762534206718	CMakeFiles/order_management_system.dir/main.cpp.obj	ae8c0dce400e45f5
+1049	1155	7724762535300535	order_management_system.exe	38c6975eb9a12ade
+3	713	7724763471268332	CMakeFiles/order_management_system.dir/main.cpp.obj	ae8c0dce400e45f5
+713	805	7724763472049598	order_management_system.exe	38c6975eb9a12ade
+5	689	7724764214740373	CMakeFiles/order_management_system.dir/main.cpp.obj	ae8c0dce400e45f5
+689	777	7724764215677918	order_management_system.exe	38c6975eb9a12ade
