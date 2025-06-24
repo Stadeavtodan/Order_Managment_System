@@ -221,3 +221,35 @@ int calc(const char* math)
     }
     return result;
 }
+
+template <typename T>
+void mySort(T* arr, int size, bool (*cmp)(T, T)) {
+    for (int i = 0; i < size - 1; ++i) {
+        for (int j = 0; j < size - i - 1; ++j) {
+            if (cmp(arr[j], arr[j + 1])) {
+                T temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+template <typename T>
+void delItem2(T*&arr, int& size, int index){
+    if (index < 0 || index >= size){
+        return;
+    }
+    T* tmp = new T[size - 1];
+    for (int i = 0, j = 0; i < size; i++){
+        if(i != index){
+            tmp[j] = arr[i];
+            j++;
+        }
+    }
+    delete[] arr;
+
+    size--;
+
+    arr = tmp;
+}

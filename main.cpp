@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Order.h"
+#include "ArrayTemplate.h"
 #define CREATE_LOAD 0 // 1 - create, 0 - load
 
 int main()
@@ -31,6 +32,7 @@ int main()
 
     int menu = 0;
     int tmpOrderNumber;
+    int id = -1;
     do{
         cout << "\n-------------------------------------\n";
         cout << "\t MENU:\n\n";
@@ -41,6 +43,10 @@ int main()
         cout << "3 - Complete order\n";
         cout << "4 - Find by new\n";
         cout << "5 - Find by done\n";
+        cout << "6 - Sort by cash\n";
+        cout << "7 - Sort by name\n";
+        cout << "8 - Sort by number of the order\n";
+        cout << "9 - Delete order\n";
 
         cout << "Enter: ";
         cin >> menu;
@@ -86,6 +92,7 @@ int main()
                         cout << "==================================\n";
                     }
                 }
+                break;
             case 5:
                 for(int i = 0; i < NClients; i++){
                     if(arr[i].isCompleted == true){
@@ -93,6 +100,38 @@ int main()
                         arr[i].showOrder();
                         cout << "==================================\n";
                     }
+                }
+                break;
+            case 6:
+                mySort<Order>(arr, NClients, [](Order a, Order b){return b.cash > a.cash;});
+                for(int i = 0; i < NClients; i++){
+                    arr[i].showOrder();
+                }
+                break;
+            case 7:
+                mySort<Order>(arr, NClients, [](Order a, Order b){return strcmp(a.clientName, b.clientName) > 0;});
+                for(int i = 0; i < NClients; i++){
+                    arr[i].showOrder();
+                }
+                break;
+            case 8:
+                mySort<Order>(arr, NClients, [](Order a, Order b){return b.orderNumber < a.orderNumber;});
+                for(int i = 0; i < NClients; i++){
+                    arr[i].showOrder();
+                }
+                break;
+            case 9:
+                cout << "Input the number of an order: ";
+                cin >> tmpOrderNumber;
+
+                id = -1;
+                for(int i = 0; i < NClients; i++){
+                    if(arr[i].orderNumber == tmpOrderNumber){id = i; break;}
+                }
+                if(id == -1) cout << "Not found!\n";
+                else{
+                    delItem2(arr, NClients, id);
+                    cout << "The order was deleted";
                 }
         }
     } while (menu != 0);

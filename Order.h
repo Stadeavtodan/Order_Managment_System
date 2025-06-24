@@ -16,7 +16,7 @@ struct Order{
     bool isCompleted = false;
 
     void showOrder(){
-        cout << "Order #" << orderNumber << "\n";
+        cout << "\nOrder #" << orderNumber << "\n";
         cout << "Client: " << clientName << "\n";
         cout << "Dishes: \n";
         for(int i = 0; i < dishQuantity; i++){
