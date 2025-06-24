@@ -15,7 +15,7 @@ struct Order{
     double cash = 0;
     bool isCompleted = false;
 
-    void showOrders(){
+    void showOrder(){
         cout << "Order #" << orderNumber << "\n";
         cout << "Client: " << clientName << "\n";
         cout << "Dishes: \n";

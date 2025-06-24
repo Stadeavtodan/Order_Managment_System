@@ -32,13 +32,15 @@ int main()
     int menu = 0;
     int tmpOrderNumber;
     do{
-        cout << "-------------------------------------\n";
+        cout << "\n-------------------------------------\n";
         cout << "\t MENU:\n\n";
         cout << "-------------------------------------\n";
         cout << "0 - Exit and save\n";
         cout << "1 - Show all orders\n";
         cout << "2 - New order\n";
         cout << "3 - Complete order\n";
+        cout << "4 - Find by new\n";
+        cout << "5 - Find by done\n";
 
         cout << "Enter: ";
         cin >> menu;
@@ -49,8 +51,8 @@ int main()
                 if(NClients == 0){cout << "There is no any order\n";}
                 else{
                     for(int i = 0; i < NClients; i++){
-                        arr[i].showOrders();
-                        cout << "==================================";
+                        arr[i].showOrder();
+                        cout << "==================================\n";
                     }
                 }
                 break;
@@ -76,7 +78,22 @@ int main()
                 if(tmpOrderNumber < 1 || tmpOrderNumber > NClients){cout << "Wrong number!";}
                 else{arr[tmpOrderNumber - 1].completeOrder();}
                 break;
-
+            case 4:
+                for(int i = 0; i < NClients; i++){
+                    if(arr[i].isCompleted == false){
+                        cout << "==================================\n";
+                        arr[i].showOrder();
+                        cout << "==================================\n";
+                    }
+                }
+            case 5:
+                for(int i = 0; i < NClients; i++){
+                    if(arr[i].isCompleted == true){
+                        cout << "==================================\n";
+                        arr[i].showOrder();
+                        cout << "==================================\n";
+                    }
+                }
         }
     } while (menu != 0);
 
