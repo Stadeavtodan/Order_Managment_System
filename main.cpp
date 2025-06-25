@@ -40,14 +40,14 @@ int main()
         cout << "0 - Exit and save\n";
         cout << "1 - Show all orders\n";
         cout << "2 - New order\n";
-        cout << "3 - Complete order\n";
-        cout << "4 - Find by new\n";
-        cout << "5 - Find by done\n";
-        cout << "6 - Sort by cash\n";
-        cout << "7 - Sort by name\n";
-        cout << "8 - Sort by number of the order\n";
-        cout << "9 - Delete order\n";
-        cout << "10 - Edit order\n";
+        cout << "3 - Edit order\n";
+        cout << "4 - Delete order\n";
+        cout << "5 - Complete order\n";
+        cout << "6 - Find by new\n";
+        cout << "7 - Find by done\n";
+        cout << "8 - Sort by cash\n";
+        cout << "9 - Sort by name\n";
+        cout << "10 - Sort by number of the order\n";
 
         cout << "Enter: ";
         cin >> menu;
@@ -79,49 +79,13 @@ int main()
             }
             case 3:
                 if(NClients == 0){cout << "There is no any order\n"; break;}
-                cout << "Enter the number of the order: ";
+                cout << "Enter order number to edit: ";
                 cin >> tmpOrderNumber;
                 cin.ignore();
-                if(tmpOrderNumber < 1 || tmpOrderNumber > NClients){cout << "Wrong number!";}
-                else{arr[tmpOrderNumber - 1].completeOrder();}
+                if(tmpOrderNumber < 1 || tmpOrderNumber > NClients){cout << "Wrong number!\n";}
+                else{arr[tmpOrderNumber - 1].editOrder();}
                 break;
             case 4:
-                for(int i = 0; i < NClients; i++){
-                    if(arr[i].isCompleted == false){
-                        cout << "==================================\n";
-                        arr[i].showOrder();
-                        cout << "==================================\n";
-                    }
-                }
-                break;
-            case 5:
-                for(int i = 0; i < NClients; i++){
-                    if(arr[i].isCompleted == true){
-                        cout << "==================================\n";
-                        arr[i].showOrder();
-                        cout << "==================================\n";
-                    }
-                }
-                break;
-            case 6:
-                mySort<Order>(arr, NClients, [](Order a, Order b){return b.cash > a.cash;});
-                for(int i = 0; i < NClients; i++){
-                    arr[i].showOrder();
-                }
-                break;
-            case 7:
-                mySort<Order>(arr, NClients, [](Order a, Order b){return strcmp(a.clientName, b.clientName) > 0;});
-                for(int i = 0; i < NClients; i++){
-                    arr[i].showOrder();
-                }
-                break;
-            case 8:
-                mySort<Order>(arr, NClients, [](Order a, Order b){return b.orderNumber < a.orderNumber;});
-                for(int i = 0; i < NClients; i++){
-                    arr[i].showOrder();
-                }
-                break;
-            case 9:
                 cout << "Input the number of an order: ";
                 cin >> tmpOrderNumber;
 
@@ -134,13 +98,49 @@ int main()
                     delItem2(arr, NClients, id);
                     cout << "The order was deleted";
                 }
-            case 10:
+            case 5:
                 if(NClients == 0){cout << "There is no any order\n"; break;}
-                cout << "Enter order number to edit: ";
+                cout << "Enter the number of the order: ";
                 cin >> tmpOrderNumber;
                 cin.ignore();
-                if(tmpOrderNumber < 1 || tmpOrderNumber > NClients){cout << "Wrong number!\n";}
-                else{arr[tmpOrderNumber - 1].editOrder();}
+                if(tmpOrderNumber < 1 || tmpOrderNumber > NClients){cout << "Wrong number!";}
+                else{arr[tmpOrderNumber - 1].completeOrder();}
+                break;
+            case 6:
+                for(int i = 0; i < NClients; i++){
+                    if(arr[i].isCompleted == false){
+                        cout << "==================================\n";
+                        arr[i].showOrder();
+                        cout << "==================================\n";
+                    }
+                }
+                break;
+            case 7:
+                for(int i = 0; i < NClients; i++){
+                    if(arr[i].isCompleted == true){
+                        cout << "==================================\n";
+                        arr[i].showOrder();
+                        cout << "==================================\n";
+                    }
+                }
+                break;
+            case 8:
+                mySort<Order>(arr, NClients, [](Order a, Order b){return b.cash > a.cash;});
+                for(int i = 0; i < NClients; i++){
+                    arr[i].showOrder();
+                }
+                break;
+            case 9:
+                mySort<Order>(arr, NClients, [](Order a, Order b){return strcmp(a.clientName, b.clientName) > 0;});
+                for(int i = 0; i < NClients; i++){
+                    arr[i].showOrder();
+                }
+                break;
+            case 10:
+                mySort<Order>(arr, NClients, [](Order a, Order b){return b.orderNumber < a.orderNumber;});
+                for(int i = 0; i < NClients; i++){
+                    arr[i].showOrder();
+                }
                 break;
         }
     } while (menu != 0);
