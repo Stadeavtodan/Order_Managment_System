@@ -22,8 +22,8 @@ struct Order{
         for(int i = 0; i < dishQuantity; i++){
             cout << " - " << dishList[i] << "\n";
         }
-        cout << fixed;
-        cout.precision(2);
+        cout << fixed; // буде виводити у нормальному форматі: 12.01, не 1е521
+        cout.precision(2); // кількість знаків після крапки
         cout << "Summary: " << cash << " uah\n";
         cout << "Status: ";
         if(isCompleted){cout << "Done";}
