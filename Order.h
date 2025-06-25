@@ -85,6 +85,30 @@ struct Order{
         else{isCompleted = true; cout << "The order #" << orderNumber << "is completed\n";}
     };
 
+    void editOrder(){
+        cout << "Editing order #" << orderNumber << "\n";
+        cout << "Old client name: " << clientName << "\n";
+        cout << "Enter new client name (or press Enter to skip): ";
+        char newName[100];
+        cin.getline(newName, 100);
+        if(strlen(newName) > 0){strcpy(clientName, newName);}
+
+        cout << "Do you want to change the dishes? (y/n): ";
+        char choice;
+        cin >> choice;
+        cin.ignore();
+
+        if(choice == 'y' || choice == 'Y'){
+            for(int i = 0; i < dishQuantity; i++){delete[] dishList[i];}
+            delete[] dishList;
+            dishList = nullptr;
+            dishQuantity = 0;
+            cash = 0;
+            newOrder(orderNumber);
+        }
+        cout << "Order updated!\n";
+    }
+
     void saveToBinaryFile(FILE* file){
         fwrite(&orderNumber, sizeof(orderNumber), 1, file);
         fwrite(clientName, sizeof(clientName), 1, file);

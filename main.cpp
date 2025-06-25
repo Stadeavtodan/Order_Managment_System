@@ -47,6 +47,7 @@ int main()
         cout << "7 - Sort by name\n";
         cout << "8 - Sort by number of the order\n";
         cout << "9 - Delete order\n";
+        cout << "10 - Edit order\n";
 
         cout << "Enter: ";
         cin >> menu;
@@ -133,6 +134,14 @@ int main()
                     delItem2(arr, NClients, id);
                     cout << "The order was deleted";
                 }
+            case 10:
+                if(NClients == 0){cout << "There is no any order\n"; break;}
+                cout << "Enter order number to edit: ";
+                cin >> tmpOrderNumber;
+                cin.ignore();
+                if(tmpOrderNumber < 1 || tmpOrderNumber > NClients){cout << "Wrong number!\n";}
+                else{arr[tmpOrderNumber - 1].editOrder();}
+                break;
         }
     } while (menu != 0);
 
