@@ -96,8 +96,9 @@ int main()
                 if(id == -1) cout << "Not found!\n";
                 else{
                     delItem2(arr, NClients, id);
-                    cout << "The order was deleted";
+                    cout << "The order was deleted\n";
                 }
+                break;
             case 5:
                 if(NClients == 0){cout << "There is no any order\n"; break;}
                 cout << "Enter the number of the order: ";
