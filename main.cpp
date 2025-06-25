@@ -55,7 +55,7 @@ int main()
             default: cout << "Error!\n"; break;
             case 0: cout << "Bye\n"; break;
             case 1:
-                if(NClients == 0){cout << "There is no any order\n";}
+                if(NClients == 0){cout << "There is no any order to show\n";}
                 else{
                     for(int i = 0; i < NClients; i++){
                         arr[i].showOrder();
